@@ -1,6 +1,8 @@
 import useSWR, { SWRConfiguration } from 'swr'
 
-type BitcoinsApiResponse = {
+export const CURRENCIES = ['USD', 'GBP', 'EUR'] as const
+
+export type BitcoinsApiResponse = {
   time: {
     updated: string
     updatedISO: string
@@ -9,7 +11,7 @@ type BitcoinsApiResponse = {
   disclaimer: string
   chartName: 'Bitcoin'
   bpi: {
-    [Code in 'USD' | 'GBP' | 'EUR']: {
+    [Code in typeof CURRENCIES[number]]: {
       code: Code
       symbol: string
       rate: string
@@ -24,9 +26,9 @@ export function useBitcoinsApi(
 ): {
   data?: BitcoinsApiResponse['bpi']
   isLoading: boolean
-  error: string | undefined
+  error: Error | undefined
 } {
-  const { data, error } = useSWR<BitcoinsApiResponse, string>(
+  const { data, error } = useSWR<BitcoinsApiResponse, Error>(
     'https://api.coindesk.com/v1/bpi/currentprice.json',
     async (url) => {
       const response = await fetch(url)
