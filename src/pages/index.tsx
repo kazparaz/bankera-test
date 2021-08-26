@@ -17,6 +17,15 @@ const PageHome: NextPage = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          background: #dbf2f2;
+        }
+
+        .content {
+          margin: 20px;
+          padding: 50px;
+          background: #fff;
+          box-shadow: 0 0 50px 0 rgb(0 0 0 / 10%);
+          border-radius: 8px;
         }
       `}</style>
     </>

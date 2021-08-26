@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CURRENCIES, useBitcoinsApi } from '../api'
 import { formatCurrency, isOneOf } from '../utils'
+import { Button } from './Button'
 import { FormGroup } from './FormGroup'
 import { Select } from './Select'
 
@@ -10,8 +11,7 @@ export const BitcoinConverter = (): JSX.Element => {
   const [visibleCurrencies, setVisibleCurrencies] = useState<
     typeof CURRENCIES[number][]
   >(['USD'])
-  const { data, error } = useBitcoinsApi({ refreshInterval })
-
+  const { data, isLoading, error } = useBitcoinsApi({ refreshInterval })
   return (
     <>
       <div className='root'>
@@ -67,14 +67,16 @@ export const BitcoinConverter = (): JSX.Element => {
                     <FormGroup key={item.code} label={item.code}>
                       <div className='currencyInputWrap'>
                         <input
+                          className='currencyValue'
                           readOnly
+                          disabled
                           value={formatCurrency(
                             item.rate_float * amountBTC,
                             item.code
                           )}
                         />
-                        <button
-                          className='currencyRemove'
+                        <Button
+                          label='✕'
                           onClick={() =>
                             setVisibleCurrencies(
                               visibleCurrencies.filter(
@@ -82,9 +84,7 @@ export const BitcoinConverter = (): JSX.Element => {
                               )
                             )
                           }
-                        >
-                          ×
-                        </button>
+                        />
                       </div>
                     </FormGroup>
                   ))}
@@ -110,8 +110,8 @@ export const BitcoinConverter = (): JSX.Element => {
           display: flex;
         }
 
-        .currencyRemove {
-          margin-left: 0.5rem;
+        .currencyValue {
+          margin-right: 0.5rem;
         }
       `}</style>
     </>
