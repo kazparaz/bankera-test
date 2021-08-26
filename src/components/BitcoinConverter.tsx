@@ -65,10 +65,24 @@ export const BitcoinConverter = (): JSX.Element => {
                   .filter((item) => visibleCurrencies.includes(item.code))
                   .map((item) => (
                     <FormGroup key={item.code} label={item.code}>
-                      <input
-                        readOnly
-                        value={formatCurrency(item.rate_float * amountBTC)}
-                      />
+                      <div className='currencyInputWrap'>
+                        <input
+                          readOnly
+                          value={formatCurrency(item.rate_float * amountBTC)}
+                        />
+                        <button
+                          className='currencyRemove'
+                          onClick={() =>
+                            setVisibleCurrencies(
+                              visibleCurrencies.filter(
+                                (code) => code !== item.code
+                              )
+                            )
+                          }
+                        >
+                          ×
+                        </button>
+                      </div>
                     </FormGroup>
                   ))}
             </>
@@ -81,8 +95,17 @@ export const BitcoinConverter = (): JSX.Element => {
         form > :global(*):not(:first-child) {
           margin-top: 1rem;
         }
+
         .error {
           color: red;
+        }
+
+        .currencyInputWrap {
+          display: flex;
+        }
+
+        .currencyRemove {
+          margin-left: 0.5rem;
         }
       `}</style>
     </>
