@@ -68,7 +68,10 @@ export const BitcoinConverter = (): JSX.Element => {
                       <div className='currencyInputWrap'>
                         <input
                           readOnly
-                          value={formatCurrency(item.rate_float * amountBTC)}
+                          value={formatCurrency(
+                            item.rate_float * amountBTC,
+                            item.code
+                          )}
                         />
                         <button
                           className='currencyRemove'
@@ -91,7 +94,10 @@ export const BitcoinConverter = (): JSX.Element => {
       </div>
 
       <style jsx>{`
-        form,
+        h1 {
+          margin-bottom: 2rem;
+        }
+
         form > :global(*):not(:first-child) {
           margin-top: 1rem;
         }
