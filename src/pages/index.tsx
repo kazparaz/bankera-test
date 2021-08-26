@@ -1,14 +1,14 @@
 import type { NextPage } from 'next'
-import { CurrencyConverter } from '../components/CurrencyConverter'
+import { BitcoinConverter } from '../components/BitcoinConverter'
 import { DocumentHead } from '../components/DocumentHead'
 
 const PageHome: NextPage = () => {
   return (
     <>
-      <DocumentHead pageTitle='Currency converter' />
+      <DocumentHead pageTitle='Bitcoin converter' />
       <main>
         <div className='content'>
-          <CurrencyConverter />
+          <BitcoinConverter />
         </div>
       </main>
 
