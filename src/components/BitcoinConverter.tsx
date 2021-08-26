@@ -11,7 +11,7 @@ export const BitcoinConverter = (): JSX.Element => {
   const [visibleCurrencies, setVisibleCurrencies] = useState<
     typeof CURRENCIES[number][]
   >(['USD'])
-  const { data, isLoading, error } = useBitcoinsApi({ refreshInterval })
+  const { data, error } = useBitcoinsApi({ refreshInterval })
   return (
     <>
       <div className='root'>

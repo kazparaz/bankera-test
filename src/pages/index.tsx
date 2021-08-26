@@ -6,6 +6,7 @@ const PageHome: NextPage = () => {
   return (
     <>
       <DocumentHead pageTitle='Bitcoin converter' />
+
       <main>
         <div className='content'>
           <BitcoinConverter />
