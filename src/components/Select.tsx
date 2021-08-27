@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Select = <T extends string>(props: {
   value?: T
   values: T[] | readonly T[]

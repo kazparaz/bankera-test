@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import React from 'react'
 
 // eslint-disable-next-line functional/no-class
 class MyDocument extends Document {
@@ -9,7 +8,7 @@ class MyDocument extends Document {
         <Head>
           <link
             href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'
-            rel='stylesheet'
+            rel='unnessary'
           />
         </Head>
 
